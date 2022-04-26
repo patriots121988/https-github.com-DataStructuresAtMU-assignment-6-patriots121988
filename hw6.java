@@ -7,6 +7,19 @@ import java.util.TreeSet;
 public class hw6 {
     public static void main(String args[]) {
 
+        final String LOGFILENAME = "HW6.txt";
+
+        try {
+            PrintStream st = new PrintStream(LOGFILENAME);
+            System.setOut(st);
+            System.setErr(st);
+        } catch (FileNotFoundException ioe) {
+            System.err.println("Cannot redirect stderr and stdout " +
+                    ioe.getMessage());
+            ioe.printStackTrace();
+            System.exit(-1);
+        }
+
         Set<Book> treeSet = new TreeSet<>();
         Set<Book> treePrice = new TreeSet<Book>(new BookPrice());
 
